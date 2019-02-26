@@ -41,3 +41,12 @@ class Category(models.Model):
         # Category를 Categories로 대체
         verbose_name = 'Category'
         verbose_name_plural = 'Categories'
+
+
+class Reserve(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.EmailField()
+    notes = models.TextField()
+
+    def __str__(self):
+        return self.name

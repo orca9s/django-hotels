@@ -28,21 +28,38 @@
   </section>
   <!-- END: slider  -->
 
-  <section class="probootstrap-section">
+    <section class="probootstrap-section">
+      <div class="container">
+        <div class="row heading">
+          <div class="col-md-12"><h2 class="mt0 mb50 text-center">{{ property_detail }}</h2></div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <p><img src="{{ property_detail.image.url }}" class="img-responsive" alt="Free Bootstrap Template by uicookies.com"></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h2>Details</h2>
+              <p>Type : {{ property_detail.property_type }}</p>
+              <p>Area : {{ property_detail.area }}</p>
+              <p>Beds : {{ property_detail.beds_number }}</p>
+              <p>Baths : {{ property_detail.baths_number }}</p>
+              <p>Garages : {{ property_detail.garages_number }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="probootstrap-section">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <p><img src="{{ property_detail.image.url }}" class="img-responsive" alt="Free Bootstrap Template by uicookies.com"></p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <h2>Details</h2>
-            <p>Type : {{ property_detail.property_type }}</p>
-            <p>Area : {{ property_detail.area }}</p>
-            <p>Beds : {{ property_detail.beds_number }}</p>
-            <p>Baths : {{ property_detail.baths_number }}</p>
-            <p>Garages : {{ property_detail.garages_number }}</p>
+            <h2>Reserve This Property</h2>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ reserve_form }}
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
         </div>
       </div>
     </div>
