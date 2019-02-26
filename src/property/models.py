@@ -1,8 +1,8 @@
 from django.db import models
 
 property_type = (
-    ('S', 'Sale'),
-    ('R', 'rent'),
+    ('sale', 'sale'),
+    ('rent', 'rent'),
 )
 
 
