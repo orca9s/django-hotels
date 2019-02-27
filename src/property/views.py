@@ -19,12 +19,12 @@ def property_list(request):
             Q(name__icontains=address_query) &
             Q(property_type__icontains=property_type[0])
         ).distinct()
-    else:
-        context = {
-            
-        }
-
-        return render(request, template, context)
+    # else:
+    #     context = {
+    #
+    #     }
+    #
+    #     return render(request, template, context)
 
     print(property_list)
     context = {
