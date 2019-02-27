@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from property.models import Property, Category
+
+
 from agents.models import Agent
+from property.models import Category, Property
 
 
 def home(request):

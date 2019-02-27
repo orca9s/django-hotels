@@ -9,20 +9,20 @@
           <div class="col-md-8 col-md-offset-2">
 
             <div class="probootstrap-home-search probootstrap-animate">
-              <form action="" method="post">
+              <form action="{% url 'property:property_list' %}" method="get">
                 <h2 class="heading">Search your next dream home here</h2>
                 <div class="probootstrap-field-group">
                   <div class="probootstrap-fields">
                     
                     <div class="search-field">
                       <i class="icon-location2"></i>
-                      <input type="text" class="form-control" placeholder="Enter address, ZIP code, Neighborhoods">
+                      <input type="text" name='q' class="form-control" placeholder="Enter address">
                     </div>
                     <div class="search-category">
                       <i class="icon-chevron-down"></i>
-                      <select name="#" id="" class="form-control">
-                        <option value="">For Rent</option>
-                        <option value="">For Sale</option>
+                      <select name="property_type" id="" class="form-control">
+                        <option value="rent">For Rent</option>
+                        <option value="sale">For Sale</option>
                       </select>
                     </div>
                   </div>
