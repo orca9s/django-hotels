@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect
 from .models import Property, Category
 from .forms import ReserveForm
 from django.db.models import Q
@@ -18,6 +19,12 @@ def property_list(request):
             Q(name__icontains=address_query) &
             Q(property_type__icontains=property_type[0])
         ).distinct()
+    else:
+        context = {
+            
+        }
+
+        return render(request, template, context)
 
     print(property_list)
     context = {
