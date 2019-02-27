@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block body %}
   <!-- END: header -->
   <section class="probootstrap-slider flexslider">
@@ -49,7 +50,7 @@
         <div class="col-md-4">
           <div class="probootstrap-card text-center probootstrap-animate">
             <div class="probootstrap-card-media svg-sm colored">
-              <img src="img/flaticon/svg/001-prize.svg" class="svg" alt="Free HTML5 Template by uicookies.com">
+              <img src="{% static 'img/flaticon/svg/001-prize.svg' %}" class="svg" alt="Free HTML5 Template by uicookies.com">
             </div>
             <div class="probootstrap-card-text">
               <h2 class="probootstrap-card-heading">Award Winning Brooker</h2>
@@ -61,7 +62,7 @@
         <div class="col-md-4">
           <div class="probootstrap-card text-center probootstrap-animate">
             <div class="probootstrap-card-media svg-sm colored">
-              <img src="img/flaticon/svg/005-new.svg" class="svg" alt="Free HTML5 Template by uicookies.com">
+              <img src="{% static 'img/flaticon/svg/005-new.svg' %}" class="svg" alt="Free HTML5 Template by uicookies.com">
             </div>
             <div class="probootstrap-card-text">
               <h2 class="probootstrap-card-heading">New Houses</h2>
@@ -73,7 +74,7 @@
         <div class="col-md-4">
           <div class="probootstrap-card text-center  probootstrap-animate">
             <div class="probootstrap-card-media svg-sm colored">
-              <img src="img/flaticon/svg/006-coin.svg" class="svg" alt="Free HTML5 Template by uicookies.com">
+              <img src="{% static 'img/flaticon/svg/006-coin.svg' %}" class="svg" alt="Free HTML5 Template by uicookies.com">
             </div>
             <div class="probootstrap-card-text">
               <h2 class="probootstrap-card-heading">Affordable Houses</h2>
@@ -93,7 +94,7 @@
         <h2 class="mt0 mb50 text-center">Explore Our Neighborhoods</h2>
       </div>
       <div class="row probootstrap-gutter10">
-      {% for category in category_list %}
+      {% for category in category_list_home %}
         <div class="col-md-6 col-sm-6">
           <a href="#" class="probootstrap-hover-overlay">
             <img src="{{ category.image.url }}" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
@@ -125,7 +126,7 @@
         <h2 class="mt0 mb50 text-center">Featured Listing</h2>
       </div>
       <div class="row">
-        {% for property in property_list %}
+        {% for property in property_list_home %}
             <div class="col-md-4 col-sm-6">
               <div class="probootstrap-card probootstrap-listing">
                 <div class="probootstrap-card-media">
@@ -143,19 +144,19 @@
                   <ul>
                     <li>
                       Area
-                      <span>2400 m2</span>
+                      <span>{{ property.area }} m2</span>
                     </li>
                     <li>
                       Beds
-                      <span>3</span>
+                      <span>{{ property.beds_number }}</span>
                     </li>
                     <li>
                       Baths
-                      <span>2</span>
+                      <span>{{ property.baths_number }}</span>
                     </li>
                     <li>
                       Garages
-                      <span>1</span>
+                      <span>{{ property.garages_number }}</span>
                     </li>
                   </ul>
                 </div>
@@ -231,54 +232,19 @@
         <h2 class="mt0 mb50 text-center">Our Agents</h2>
       </div>
       <div class="row">
-        <div class="col-md-3">
-          <div class="probootstrap-card probootstrap-person text-left">
-            <div class="probootstrap-card-media">
-              <img src="img/person_1.jpg" class="img-responsive" alt="Free HTML5 Template by uicookies.com">
+          {% for agent in agent_list_home %}
+            <div class="col-md-3">
+              <div class="probootstrap-card probootstrap-person text-left">
+                <div class="probootstrap-card-media">
+                  <img src="{{ agent.image.url }}" class="img-responsive" alt="Free HTML5 Template by uicookies.com">
+                </div>
+                <div class="probootstrap-card-text">
+                  <h2 class="probootstrap-card-heading mb0">{{ agent.name }}</h2>
+                  <p><small>{{ agent.title }}</small></p>
+                </div>
+              </div>
             </div>
-            <div class="probootstrap-card-text">
-              <h2 class="probootstrap-card-heading mb0">Jeremy Slater</h2>
-              <p><small>Real Estate Brooker</small></p>
-              <p><a href="#">View Details</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="probootstrap-card probootstrap-person text-left">
-            <div class="probootstrap-card-media">
-              <img src="img/person_2.jpg" class="img-responsive" alt="Free HTML5 Template by uicookies.com">
-            </div>
-            <div class="probootstrap-card-text">
-              <h2 class="probootstrap-card-heading mb0">James Butterly</h2>
-              <p><small>Buying Agent</small></p>
-              <p><a href="#">View Details</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="probootstrap-card probootstrap-person text-left">
-            <div class="probootstrap-card-media">
-              <img src="img/person_3.jpg" class="img-responsive" alt="Free HTML5 Template by uicookies.com">
-            </div>
-            <div class="probootstrap-card-text">
-              <h2 class="probootstrap-card-heading mb0">James Smith</h2>
-              <p><small>Real Estate Brooker</small></p>
-              <p><a href="#">View Details</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="probootstrap-card probootstrap-person text-left">
-            <div class="probootstrap-card-media">
-              <img src="img/person_4.jpg" class="img-responsive" alt="Free HTML5 Template by uicookies.com">
-            </div>
-            <div class="probootstrap-card-text">
-              <h2 class="probootstrap-card-heading mb0">Chris White</h2>
-              <p><small>Selling Agent</small></p>
-              <p><a href="#">View Details</a></p>
-            </div>
-          </div>
-        </div>
+          {% endfor %}
       </div>
     </div>
   </section>
