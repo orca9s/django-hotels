@@ -5,9 +5,18 @@ from .forms import ReserveForm
 from django.db.models import Q
 
 
-def property_list(request):
+def property_list(requset):
     property_list = Property.objects.all()
     template = 'property/list.html'
+    context = {
+        'property_list': property_list,
+    }
+    return render(requset, template, context)
+
+
+def property_search_list(request):
+    property_search_list = Property.objects.all()
+    template = 'property/search_list.html'
 
     address_query = request.GET.get('q')
     property_type = request.GET.get('property_type', None)
@@ -15,20 +24,15 @@ def property_list(request):
         print(address_query)
         print(property_type)
         # 검색 기능을 사용하기 위해서 이름과 타입으로 비교(이름, rent or sale)
-        property_list = property_list.filter(
+        property_search_list = property_search_list.filter(
             Q(name__icontains=address_query) &
             Q(property_type__icontains=property_type[0])
         ).distinct()
-    # else:
-    #     context = {
-    #
-    #     }
-    #
-    #     return render(request, template, context)
+    else:
+        return render(request, template)
 
-    print(property_list)
     context = {
-        'property_list': property_list
+        'property_search_list': property_search_list
     }
 
     return render(request, template, context)
