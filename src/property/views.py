@@ -57,6 +57,17 @@ def property_detail(request, id):
 
 # 메인페이지 에서 지역별 현황을 눌렀을 경우 지역상품을 보여주는 페이지
 def property_location_total_detail(request, location_id):
+    """
+    1. 템플릿이 로드 되면서 내가 선택할 부분의 url을 받아옴
+    2. url을 통해 내가 선택한 지역의 ID값을 가지고(url에 담아서 보냄)
+    3. category(지역)모델에 접근하여 url에 담아온 ID값과 일치하는 지역을 찾은 후
+    4. Property모델로 이동하여 category에서 받아온 ID와(지역) Property(호텔)과 연결된 지역 ID값 비교
+    4. filter를 통해서 내가 선택한 지역의 ID값을 가지고 있는 property들을 모두 찾는다
+    5. 찾은 값을 context에 담아서 total_detail.html로 리턴시킨다.
+    :param request:
+    :param location_id:
+    :return:
+    """
     # 카테고리(지역)의 id를 받아옴
     property_location = Category.objects.get(id=location_id)
     # property(호텔)에 입력된 지역과 위에서 받아온 category(지역) id값을 비교해서 필터링
