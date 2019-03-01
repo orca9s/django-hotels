@@ -53,3 +53,16 @@ def property_detail(request, id):
     }
 
     return render(request, template, context)
+
+
+# 메인페이지 에서 지역별 현황을 눌렀을 경우 지역상품을 보여주는 페이지
+def property_location_total_detail(request, location_id):
+    # 카테고리(지역)의 id를 받아옴
+    property_location = Category.objects.get(id=location_id)
+    # property(호텔)에 입력된 지역과 위에서 받아온 category(지역) id값을 비교해서 필터링
+    property_location_total_detail = Property.objects.filter(category__id=property_location.id)
+    template = 'property/total_detail.html'
+    context = {
+        'property_location_total_detail': property_location_total_detail,
+    }
+    return render(request, template, context)
