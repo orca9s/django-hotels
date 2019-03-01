@@ -1,3 +1,4 @@
+from django.db.models import Count
 from django.shortcuts import render
 
 
@@ -6,7 +7,12 @@ from property.models import Category, Property
 
 
 def home(request):
-    category_list = Category.objects.all()
+    category_list = Category.objects.annotate(property_count=Count('property')).values(
+        'category_name',
+        'property_count',
+        'image',
+    )
+    print(category_list)
     property_list = Property.objects.all()
     agent_list = Agent.objects.all()
     template = 'home/home.html'
