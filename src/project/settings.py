@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'about',
     'contact',
     'home',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
