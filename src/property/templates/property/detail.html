@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load bootstrap4 %}
 {% block body %}
     <!-- END: header -->
     <section class="probootstrap-slider flexslider2 page-inner">
@@ -57,8 +57,10 @@
                     <h2>Reserve This Property</h2>
                     <form action="" method="POST">
                         {% csrf_token %}
-                        {{ reserve_form }}
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        {% bootstrap_form reserve_form %}
+                        {% buttons %}
+                            <button type="submit" class="btn btn-primary">Reserve</button>
+                        {% endbuttons %}
                     </form>
                 </div>
             </div>

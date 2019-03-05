@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 {% block body %}
   <!-- END: header -->
   <section class="probootstrap-slider flexslider2 page-inner">
@@ -33,10 +34,10 @@
         <div class="col-md-8">
           <form method="POST" class="probootstrap-form mb60">
             {% csrf_token %}
-            {{ contact_form }}
-            <div class="form-group">
-              <input type="submit" class="btn btn-primary" id="submit" name="submit" value="Send Message">
-            </div>
+            {% bootstrap_form contact_form %}
+            {% buttons %}
+                <button type="submit" class="btn btn-primary">Send message</button>
+            {% endbuttons %}
           </form>
         </div>
         <div class="col-md-3 col-md-push-1">

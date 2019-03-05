@@ -82,25 +82,11 @@
             <div class="col-md-3">
                 <div class="probootstrap-footer-widget">
                     <h4 class="heading">Popular Cities</h4>
+                    {% for category_list in category_list_home %}
                     <ul class="stack-link">
-                        <li><a href="#">New York <small>(320 properties)</small></a></li>
-                        <li><a href="#">San Francisco <small>(294 properties)</small></a></li>
-                        <li><a href="#">Brooklyn <small>(300 properties)</small></a></li>
-                        <li><a href="#">Chicago <small>(268 properties)</small></a></li>
-                        <li><a href="#">Los Angeles <small>(342 properties)</small></a></li>
+                        <li><a href="{% url 'property:property_location_total_detail' category_list.id %}">{{ category_list.category_name }} <small>( {{ category_list.property_count }} properties)</small></a></li>
                     </ul>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="probootstrap-footer-widget probootstrap-link-wrap">
-                    <h4 class="heading">Subscribe</h4>
-                    <p>Far far away behind the word mountains far from.</p>
-                    <form action="#">
-                        <div class="form-field">
-                            <input type="text" class="form-control" placeholder="Enter your email">
-                            <button class="btn btn-subscribe">Send</button>
-                        </div>
-                    </form>
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -113,9 +99,9 @@
             <div class="col-md-6">
                 <div class="probootstrap-footer-widget right">
                     <ul class="probootstrap-footer-social">
-                        <li><a href="#"><i class="icon-twitter"></i></a></li>
-                        <li><a href="#"><i class="icon-facebook"></i></a></li>
-                        <li><a href="#"><i class="icon-instagram2"></i></a></li>
+                        <li><a href="https://twitter.com/?lang=ko"><i class="icon-twitter"></i></a></li>
+                        <li><a href="https://www.facebook.com/"><i class="icon-facebook"></i></a></li>
+                        <li><a href="https://www.instagram.com/?hl=ko"><i class="icon-instagram2"></i></a></li>
                     </ul>
                 </div>
             </div>
